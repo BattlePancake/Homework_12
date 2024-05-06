@@ -55,26 +55,73 @@
 
 //---------------------------- Task 7 -------------------------------
 
-using System.Runtime.Intrinsics.Arm;
+//using System.Runtime.Intrinsics.Arm;
+//using Homework_12;
 
-var dict = new Dictionary<int, string>()
+//var dict = new Dictionary<int, string>()
+//{
+//    {1, "1Vit"},
+//    {2, "2Vita"},
+//    {3, "3Vital"},
+//    {4, "4Vitaliy"},
+//};
+
+//// var search = dict.Select(s => s = new KeyValuePair< int, string >(s.Key,s.Value)).ToList();
+//// тут не получилось поменять местами ключ и значение
+
+//var sortList = new List<KeyValuePair<string, int>>()
+//{
+//};
+
+//foreach (var a in dict)
+//{
+//    sortList.Add(new KeyValuePair<string, int>(a.Value, a.Key));
+//}
+
+//Console.WriteLine(string.Join(" , ", sortList));
+
+//---------------------------- Task 8 -------------------------------
+
+using Homework_12;
+
+var users = new List<User>()
 {
-    {1, "1Vit"},
-    {2, "2Vita"},
-    {3, "3Vital"},
-    {4, "4Vitaliy"},
+    new User()
+    {
+        FirstName = "Vlados",
+        MiddleName = "Vladosovich",
+        LastName = "Vladosov"
+    },
+    new User()
+    {
+        FirstName = "Gleb",
+        LastName = "Glebov"
+    },
+    new User()
+    {
+        FirstName = "Max",
+        LastName = "Maximov"
+    },
+    new User()
+    {
+        FirstName = "Vitaly",
+        MiddleName = "Vitalevich",
+        LastName = "Vitaliev"
+    },
 };
 
-// var search = dict.Select(s => s = new KeyValuePair< int, string >(s.Key,s.Value)).ToList();
-// тут не получилось поменять местами ключ и значение
+// var search = users.Select(s => new {Name = s.FirstName, Middle = s.MiddleName, Last = s.LastName}).ToArray();
 
-var sortList = new List<KeyValuePair<string, int>>()
-{
-};
+// foreach(var a in search)
+// {
+//     Console.WriteLine($"{a.Name} {a.Middle} {a.Last}");
+// }
 
-foreach (var a in dict)
+//---------------------------- Task 9 -------------------------------
+
+var newSearch = users.OrderByDescending(s => s.LastName).Select(s => s).ToArray();
+
+foreach (var a in newSearch)
 {
-    sortList.Add(new KeyValuePair<string, int>(a.Value, a.Key));
+    Console.WriteLine($"{a.LastName} {a.FirstName} {a.MiddleName}");
 }
-
-Console.WriteLine(string.Join(" , ", sortList));
